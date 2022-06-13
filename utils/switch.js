@@ -96,6 +96,7 @@ module.exports = (threads, order, sort) => {
 			process.exit();
 		}
 		if (key.name === 's'){
+			console.clear()
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;
