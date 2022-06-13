@@ -5,7 +5,10 @@ const boxen = require('boxen');
 const { info } = require('log-symbols'); // Colored symbols for various log levels
 const end = require('./end');
 const output = require('./output');
-let check=""
+const save = require('./save');
+const browser = require('./browser');
+const inquirer = require('inquirer');
+let check= "";
 
 /**
  *
@@ -95,13 +98,74 @@ module.exports = (threads, order, sort) => {
 			end();
 			process.exit();
 		}
+<<<<<<< HEAD
 		if (key.name === 's'){
 			console.clear()
+=======
+		if (key.name === 's'){	//save
+>>>>>>> e4b790178c9eacdfcc866c5de47390bcee837a5b
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;
 			console.log(boxen(formatThread(saveThread, saveAnswer, threads, order, sort)))
 			check=""
+			
+
+			var selected_title = threads[saveThread].title;
+			var selected_body = threads[saveThread].body;
+			var selected_answer = threads[saveThread].answers[saveAnswer];
+	
+			saveConfirm()	
+			.then((flag) => {
+				if (flag == true)
+				{
+					save(selected_title, selected_body, selected_answer);
+					// saveThread = null;
+					// saveAnswer = null;
+					// process.stdin.setRawMode(true);
+					// process.stdin.resume();
+				}
+				else {
+					console.clear();
+					console.log(formatThread(saveThread, saveAnswer, threads, order, sort));
+					saveThread = null;
+					saveAnswer = null;
+					process.stdin.setRawMode(true);
+					process.stdin.resume();
+				}
+			});
+		}
+		if (key.name === 'b'){	// browser
+			check="< Selected Question & Answer >\n\n"
+			saveThread = counterOfThread;
+			saveAnswer = counterOfAnswer;
+			console.log(boxen(formatThread(saveThread, saveAnswer, threads, order, sort)))
+			check=""
+			
+
+			var selected_title = threads[saveThread].title;
+			var selected_body = threads[saveThread].body;
+			var selected_answer = threads[saveThread].answers[saveAnswer];
+	
+			browserConfirm()	
+			.then((flag) => {
+				if (flag == true)
+				{
+					browser();
+					// saveThread = null;
+					// saveAnswer = null;
+					// process.stdin.setRawMode(true);
+					// process.stdin.resume();
+				}
+				else {
+					console.clear();
+					console.log(formatThread(saveThread, saveAnswer, threads, order, sort));
+					saveThread = null;
+					saveAnswer = null;
+					process.stdin.setRawMode(true);
+					process.stdin.resume();
+				}
+			});
 		}
 		if(key.name === 'c'){
 			console.clear()
@@ -109,4 +173,44 @@ module.exports = (threads, order, sort) => {
 	});
 	process.stdin.setRawMode(true);
 	process.stdin.resume();
+};
+
+
+const saveConfirm = async () => {
+	var save_flag;
+	await inquirer.prompt([{
+		type: "confirm",
+		name: "proceed",
+		message: "Do you want to save currently selected box?"
+	}])
+	.then((answers) => {
+		if (answers.proceed == true)
+		{
+			save_flag = true;
+		}
+		else {
+			save_flag = false;
+		}
+	});
+	return save_flag;
+};
+
+
+const browserConfirm = async () => {
+	var save_flag;
+	await inquirer.prompt([{
+		type: "confirm",
+		name: "proceed",
+		message: "Do you want to open a browser?"
+	}])
+	.then((answers) => {
+		if (answers.proceed == true)
+		{
+			save_flag = true;
+		}
+		else {
+			save_flag = false;
+		}
+	});
+	return save_flag;
 };
