@@ -34,16 +34,16 @@ const saveAsFile = () => { // 텍스트 파일 생성 함수
   mkdirp(directory);
   const pathToFile = path.join(directory, fileName);
   if (exist(pathToFile)) {
-      console.error('이미 해당 파일이 존재합니다');
+      console.error('The file already exists');
   } else {
       fs.writeFile(pathToFile, content, function (err) {
           if (err) {
-              console.log('에러발생');
+              console.log('Error Occurred');
               console.dir(err);
               return;
           }
           });
-      console.log(pathToFile, '\n저장 완료');
+      console.log(pathToFile, '\nSaved');
   }
 };
 
@@ -89,11 +89,11 @@ const pathToSave = async () => {
   let result = await inquirer.prompt({
     type: "list",
     name: "choice",
-    message: "저장할 경로를 선택하세요",
+    message: "Choose a path to save.",
     choices: [
       { name: `(default) ${homedir}\\stackoverflow-cli\\`, value: homedir+'\\stackoverflow-cli' },
       // { name: `현재 경로 ${__dirname}\\stackoverflow-cli`, value: __dirname+'\\stackoverflow-cli' }, // 작업 경로
-      { name: `현재 경로 .\\stackoverflow-cli\\`, value: '.\\stackoverflow-cli' },
+      { name: `Current path .\\stackoverflow-cli\\`, value: '.\\stackoverflow-cli' },
       //{ name: "직접 경로 입력", value: 'createPath' }
     ]
   });

@@ -6,7 +6,7 @@ const { info } = require('log-symbols'); // Colored symbols for various log leve
 const end = require('./end');
 const output = require('./output');
 const save = require('./save');
-//const browser = require('./browser');
+const browser = require('./browser');
 const inquirer = require('inquirer');
 let check= "";
 
@@ -28,7 +28,7 @@ const formatThread = (indexOfThread, indexOfAns, thread, order, sort) => {
 		.bold.inverse(`  ANSWER #${indexOfAns + 1}  \n`)} ${
 		output(thread[indexOfThread].answers[indexOfAns])
 	}\n\n${chalk.dim(
-		`GUIDE: \n - Press Up Arrow key to see next answer.\n - Press Down Arrow key to see previous answer. \n - Press Right Arrow key to see next thread.\n - Press Left Arrow key to see preview thread.\n - Press ESC to exit the CLI.\n`
+		`GUIDE: \n - Press Up Arrow key to see next answer.\n - Press Down Arrow key to see previous answer. \n - Press Right Arrow key to see next thread.\n - Press Left Arrow key to see preview thread.\n - Press ESC to exit the CLI.\n - Press 's' key to save selected question and answer.\n - Press 'b' key to open browser window.`
 	)}`;
 };
 
@@ -98,12 +98,8 @@ module.exports = (threads, order, sort) => {
 			end();
 			process.exit();
 		}
-<<<<<<< HEAD
-		if (key.name === 's'){
-=======
 
 		if (key.name === 's'){	//save
->>>>>>> 618435ad034f84a25e639527583c6c9fa5dfd669
 			console.clear()
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
@@ -137,12 +133,12 @@ module.exports = (threads, order, sort) => {
 			});
 		}
 		if (key.name === 'b'){	// browser
-			console.clear()
-			check="< Selected Question & Answer >\n\n"
+			// console.clear()
+			// check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;
-			console.log(boxen(formatThread(saveThread, saveAnswer, threads, order, sort)))
-			check=""
+			// console.log(boxen(formatThread(saveThread, saveAnswer, threads, order, sort)))
+			// check=""
 			
 
 			var selected_title = threads[saveThread].title;
@@ -164,11 +160,7 @@ module.exports = (threads, order, sort) => {
 			.then((flag) => {
 				if (flag == true)
 				{
-<<<<<<< HEAD
-					//browser();
-=======
 					browser(threads[saveThread].url);
->>>>>>> 618435ad034f84a25e639527583c6c9fa5dfd669
 					// saveThread = null;
 					// saveAnswer = null;
 					// process.stdin.setRawMode(true);
