@@ -1,14 +1,5 @@
 const inquirer = require('inquirer');
- var open = require('open');
- //var chalk = require('chalk');
-//  var Progress = require('progress'),
-// 	 bar = new Progress('running [:bar] :percent :etas', {
-// 		 complete: '=',
-// 		 incomplete: ' ',
-// 		 width: 10,
-// 		 total: 1
-// 	 });
-
+var open = require('open');
 
 module.exports = async (url) => {
     console.clear();

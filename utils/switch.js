@@ -206,7 +206,7 @@ const saveConfirm = async () => {
 
 
 const browserConfirm = async () => {
-	var save_flag;
+	var browser_flag;
 	await inquirer.prompt([{
 		type: "confirm",
 		name: "proceed",
@@ -215,11 +215,11 @@ const browserConfirm = async () => {
 	.then((answers) => {
 		if (answers.proceed == true)
 		{
-			save_flag = true;
+			browser_flag = true;
 		}
 		else {
-			save_flag = false;
+			browser_flag = false;
 		}
 	});
-	return save_flag;
+	return browser_flag;
 };
