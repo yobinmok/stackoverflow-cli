@@ -91,8 +91,9 @@ const pathToSave = async () => {
     name: "choice",
     message: "저장할 경로를 선택하세요",
     choices: [
-      { name: `(default) ${homedir}\\stackoverflow-cli`, value: homedir+'\\stackoverflow-cli' },
-      { name: `현재 경로 ${__dirname}\\stackoverflow-cli`, value: __dirname+'\\stackoverflow-cli' },
+      { name: `(default) ${homedir}\\stackoverflow-cli\\`, value: homedir+'\\stackoverflow-cli' },
+      // { name: `현재 경로 ${__dirname}\\stackoverflow-cli`, value: __dirname+'\\stackoverflow-cli' }, // 작업 경로
+      { name: `현재 경로 .\\stackoverflow-cli\\`, value: '.\\stackoverflow-cli' },
       //{ name: "직접 경로 입력", value: 'createPath' }
     ]
   });

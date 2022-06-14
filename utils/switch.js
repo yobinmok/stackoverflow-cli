@@ -141,12 +141,23 @@ module.exports = (threads, order, sort) => {
 			var selected_title = threads[saveThread].title;
 			var selected_body = threads[saveThread].body;
 			var selected_answer = threads[saveThread].answers[saveAnswer];
-	
+
+			if (threads[saveThread].links[saveAnswer].length > 0)
+			{
+
+				console.log("The answer includes images and references.")
+				console.log(threads[saveThread].links[saveAnswer]);
+			}
+			else 
+			{
+				console.log("The answer doesn't include images and references.")
+			}
+			// console.log(threads[saveThread].url);
 			browserConfirm()	
 			.then((flag) => {
 				if (flag == true)
 				{
-					browser();
+					browser(threads[saveThread].url);
 					// saveThread = null;
 					// saveAnswer = null;
 					// process.stdin.setRawMode(true);
@@ -196,7 +207,7 @@ const browserConfirm = async () => {
 	await inquirer.prompt([{
 		type: "confirm",
 		name: "proceed",
-		message: "Do you want to open a browser?"
+		message: "Do you want to view the page in a browser window?"
 	}])
 	.then((answers) => {
 		if (answers.proceed == true)
