@@ -14,7 +14,7 @@ const boxen = require('boxen');
 const getInput = async () => {
 	const prompt = new Input({
 		name: 'question',
-		message: 'What is your question? check'
+		message: 'What is your question?'
 	});
 
 	let answer;

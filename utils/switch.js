@@ -98,7 +98,9 @@ module.exports = (threads, order, sort) => {
 			end();
 			process.exit();
 		}
+
 		if (key.name === 's'){	//save
+			console.clear()
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;
@@ -131,6 +133,7 @@ module.exports = (threads, order, sort) => {
 			});
 		}
 		if (key.name === 'b'){	// browser
+			console.clear()
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;

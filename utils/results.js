@@ -46,6 +46,7 @@ const threadAns_links = thread => {
  */
 const format = question => {
 	let body = '';
+	//console.log(question);
 	question.map(index => {
 		body += `${index}\n`;
 	});

@@ -16,7 +16,7 @@ const pageSize = 10;
  * @return decodedSring
  */
 const decodeEntities = encodedString => { //+) encodedString을 input으로 받음
-	const translate_re = /&(nbsp|amp|quot|lt|gt);/g;
+	const translate_re = /&(nbsp|amp|quot|lt|gt);/g; // 정규식 -> g 플래그를 통해 패턴 값을 모두 찾음
 	const translate = { // object
 		"nbsp": ' ',
 		"amp": '&',
@@ -72,7 +72,6 @@ module.exports = async (question, flags) => {
 		const { data } = await axios.get( //+) axios.get(url, config): 데이터 조회 -> api 통신
 			`${baseUrl}?order=${order}&sort=${sort}&q=${question}&pageSize=${pageSize}&site=${site}&filter=${filter}`
 		);
-		//console.log("check" + Object.keys(data['items']))
 		spinner.succeed();
 		console.log('');
 		// decode html characters to regular chars
