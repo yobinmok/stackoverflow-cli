@@ -2,8 +2,6 @@
 
 <div align="center">
 	<b>Search any query on Stack Overflow without leaving your IDE</b>
-	
-	<b>forked from [MLH-Fellowship/stackoverflow-cli](https://github.com/MLH-Fellowship/stackoverflow-cli)</br>
 	<br>
 	<img src="https://img.shields.io/npm/v/cli-stackoverflow?color=%23f48024" alt="version">
 	<img src="https://img.shields.io/npm/dt/cli-stackoverflow?color=f48024" alt="downloads">
