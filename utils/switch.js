@@ -6,7 +6,7 @@ const { info } = require('log-symbols'); // Colored symbols for various log leve
 const end = require('./end');
 const output = require('./output');
 const save = require('./save');
-const browser = require('./browser');
+//const browser = require('./browser');
 const inquirer = require('inquirer');
 let check= "";
 
@@ -98,12 +98,8 @@ module.exports = (threads, order, sort) => {
 			end();
 			process.exit();
 		}
-<<<<<<< HEAD
 		if (key.name === 's'){
 			console.clear()
-=======
-		if (key.name === 's'){	//save
->>>>>>> e4b790178c9eacdfcc866c5de47390bcee837a5b
 			check="< Selected Question & Answer >\n\n"
 			saveThread = counterOfThread;
 			saveAnswer = counterOfAnswer;
@@ -151,7 +147,7 @@ module.exports = (threads, order, sort) => {
 			.then((flag) => {
 				if (flag == true)
 				{
-					browser();
+					//browser();
 					// saveThread = null;
 					// saveAnswer = null;
 					// process.stdin.setRawMode(true);
